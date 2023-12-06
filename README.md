@@ -24,7 +24,6 @@ To download single video:
 ```
  python -m youtube_download video -url "https://www.youtube.com/watch?v=7uCpVOSXk8I" -save "C:\Users\im530\Downloads\dtdt"
 ```
-``````
 
 To download entire playlist:
 ```
