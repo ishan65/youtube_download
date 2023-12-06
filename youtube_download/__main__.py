@@ -1,13 +1,14 @@
 from youtube_download import youtube as yt
 from youtube_download import options
 
+
 def main():
     arg = options.parse()
-    youtube = yt.youtube_download(arg.urlpath)
+    ytube = yt.youtube_download(arg.urlpath)
     if arg.subparser == "video":
-        youtube.download_single_video()
+        ytube.download_single_video(arg.savepath)
     if arg.subparser == "playlist":
-        youtube.playlist_download(arg.num)
+        ytube.playlist_download(arg.num, arg.savepath)
 
 
 if __name__ == "__main__":
