@@ -46,12 +46,20 @@ def create_parser():
         type=str,
         help="location on OS to save the playlist",
     )
+    parser.add_argument(
+        "-gui",
+        "--gui_console",
+        required=False,
+        action="store_true",
+        help="download videos using Graphical Interface")
     return parser
 
 
 def parse():
     parser = create_parser()
     known, unknown = parser.parse_known_args()
+    if hasattr(known, "gui_console"):
+        return parser.parse_args()
     if not hasattr(known, "subparser") or known.subparser is None:
         print("Please specified right parameters")
         parser.print_help()

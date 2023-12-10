@@ -23,11 +23,27 @@ class youtube_download:
         if self.op.is_dir_exist(path):
             print(f"Video to be downloaded: {vid.title}")
             vid.streams.get_highest_resolution().download(output_path=path)
+            print(f"Video download completed : {vid.title}")
             return vid.title
         raise youtubeException(f"The specified path does not exist : {path}")
 
     def download_single_video(self, path):
         self.download_videos(self.video, path)
+
+    def videos_from_url(self):
+        if self._check_url_playlist(self.url):
+            return list(self.playlist.videos)
+        else:
+            video = []
+            video.append(self.video)
+            return video
+
+    @property
+    def number_of_videos_from_url(self):
+        if self._check_url_playlist(self.url):
+            return self.playlist_length
+        else:
+            return 1
 
     @property
     def playlist_length(self):
@@ -42,9 +58,12 @@ class youtube_download:
 
     def playlist_download(self, parallel_number, path):
         print(f"Total {self.playlist_length} videos are present in the playlist")
+        self.download_video_list(list(self.playlist.videos), parallel_number, path)
+
+    def download_video_list(self, vido_list, parallel_number, path):
         with concurrent.futures.ThreadPoolExecutor() as executor:
             chucked_video_array = self._chunking(
-                list(self.playlist.videos), parallel_number
+                vido_list, parallel_number
             )
             for vid_array in chucked_video_array:
                 results = {}
