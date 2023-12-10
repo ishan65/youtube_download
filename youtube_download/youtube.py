@@ -62,9 +62,7 @@ class youtube_download:
 
     def download_video_list(self, vido_list, parallel_number, path):
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            chucked_video_array = self._chunking(
-                vido_list, parallel_number
-            )
+            chucked_video_array = self._chunking(vido_list, parallel_number)
             for vid_array in chucked_video_array:
                 results = {}
 

@@ -1,14 +1,15 @@
-from tkinter import *
+from tkinter import tk
 from tkinter import filedialog
 from tkinter import messagebox
 from youtube_download.youtube import youtube_download as yd
 
+
 class GUI:
     def __init__(self) -> None:
-        self.root=Tk()
+        self.root = tk.Tk()
         self.root.title("Youtube Downloader")
-        self.root.iconbitmap('utube.ico')
-        self.frame = LabelFrame(self.root, text="Download Youtube")
+        self.root.iconbitmap("utube.ico")
+        self.frame = tk.LabelFrame(self.root, text="Download Youtube")
         self.frame.grid(padx=20, sticky="w")
 
         self.selected_option = None
@@ -19,16 +20,10 @@ class GUI:
         self.folder_lb = None
         self.folderlocation = None
 
-        self.frame2 = LabelFrame(self.root, text="Videos")
+        self.frame2 = tk.LabelFrame(self.root, text="Videos")
         self.frame2.grid(padx=20, pady=20, sticky="w")
 
         self.videos = []
-
-    def on_canvas_configure(self, event):
-        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-
-    def on_frame2_configure(self, event):
-        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
     def user_option(self, value):
         self.selected_option = value
@@ -51,13 +46,17 @@ class GUI:
             self.folder_lb.destroy()
         folder_location = filedialog.askdirectory(initialdir="./")
         self.set_folderlocation(folder_location)
-        self.folder_lb=Label(self.frame, text=folder_location)
+        self.folder_lb = tk.Label(self.frame, text=folder_location)
         self.folder_lb.grid(row=3, column=2, padx=20)
         return folder_location
 
     def setup_stage(self):
         self.set_provided_url(self.url_obj.get())
-        if self.folderlocation is None or self.provided_url is None or self.provided_url.strip() == "":
+        if (
+            self.folderlocation is None
+            or self.provided_url is None
+            or self.provided_url.strip() == ""
+        ):
             messagebox.showerror("Input Error", "Please select location and URL")
             return False
         self.fetch_videos()
@@ -67,20 +66,20 @@ class GUI:
             for vid in self.videos:
                 vid.destroy()
         ytb = yd(self.provided_url)
-        lb=Label(self.frame2, text=f"Total videos {ytb.number_of_videos_from_url}")
+        lb = tk.Label(self.frame2, text=f"Total videos {ytb.number_of_videos_from_url}")
         lb.grid(row=0, column=0)
 
-        all_select = BooleanVar()
+        all_select = tk.BooleanVar()
         all_select.set(False)
 
         video_key_value = {}
-        checkbox = [IntVar() for _ in range(ytb.number_of_videos_from_url)]
+        checkbox = [tk.IntVar() for _ in range(ytb.number_of_videos_from_url)]
 
         def _select_all_videos():
-            value=all_select.get()
+            value = all_select.get()
             if value is True:
                 for var in range(len(checkbox)):
-                    checkbox[var].set(var+1)
+                    checkbox[var].set(var + 1)
             else:
                 for var in range(len(checkbox)):
                     checkbox[var].set(0)
@@ -93,18 +92,25 @@ class GUI:
                     to_download.append(video_key_value[key])
             ytb.download_video_list(to_download, len(to_download), self.folderlocation)
 
-        selection = Checkbutton(self.frame2, text="Select All", variable=all_select, command=_select_all_videos)
+        selection = tk.Checktk.Button(
+            self.frame2,
+            text="Select All",
+            variable=all_select,
+            command=_select_all_videos,
+        )
         selection.deselect()
         selection.grid(row=1, column=0, sticky="w")
 
-        row_num=2
+        row_num = 2
         iter = 1
         for video in ytb.videos_from_url():
-            select_var = Checkbutton(self.frame2,
-                                     text=video.title,
-                                     variable=checkbox[iter-1],
-                                     onvalue=iter,
-                                     offvalue=0)
+            select_var = tk.Checktk.Button(
+                self.frame2,
+                text=video.title,
+                variable=checkbox[iter - 1],
+                onvalue=iter,
+                offvalue=0,
+            )
             video_key_value[iter] = video
             select_var.deselect()
             self.videos.append(select_var)
@@ -112,35 +118,64 @@ class GUI:
             row_num += 1
             iter += 1
 
-        download_btn = Button(self.frame2, text="download", width=100, bg="#FF681C", command=lambda row_num=row_num: _download_selected_video(row_num))
+        download_btn = tk.Button(
+            self.frame2,
+            text="download",
+            width=100,
+            bg="#FF681C",
+            command=lambda row_num=row_num: _download_selected_video(row_num),
+        )
         download_btn.grid(row=row_num, column=0, sticky="w")
         self.videos.append(download_btn)
 
     def widget(self):
         # Creat widget
-        option = StringVar()
+        option = tk.StringVar()
         option.set("video")
-        option_lb = Label(self.frame, text="Select the option to download")
+        option_lb = tk.Label(self.frame, text="Select the option to download")
         option_lb.grid(row=0, column=0)
-        radio1 = Radiobutton(self.frame, text="video", variable=option, value="video", command=lambda: self.user_option(option.get()))
-        radio2 = Radiobutton(self.frame, text="playlist", variable=option, value="playlist", command=lambda: self.user_option(option.get()))
+        radio1 = tk.RadioButton(
+            self.frame,
+            text="video",
+            variable=option,
+            value="video",
+            command=lambda: self.user_option(option.get()),
+        )
+        radio2 = tk.RadioButton(
+            self.frame,
+            text="playlist",
+            variable=option,
+            value="playlist",
+            command=lambda: self.user_option(option.get()),
+        )
         radio1.grid(row=0, column=1)
         radio2.grid(row=1, column=1)
 
-        url_lb = Label(self.frame, text="Enter the Youtube URL")
+        url_lb = tk.Label(self.frame, text="Enter the Youtube URL")
         url_lb.grid(row=2, column=0, sticky="w")
-        urlinput = Entry(self.frame, width=50)
+        urlinput = tk.Entry(self.frame, width=50)
         self.set_url_obj(urlinput)
         urlinput.grid(row=2, column=1, padx=20)
-        location_lb = Label(self.frame, text="Location to save the video/playlist")
+        location_lb = tk.Label(self.frame, text="Location to save the video/playlist")
         location_lb.grid(row=3, column=0)
-        button_directory = Button(self.frame, text="Folder location", command=self.open_directory)
-        button_directory.grid(row=3, column=1)
+        tk.Button_directory = tk.Button(
+            self.frame, text="Folder location", command=self.open_directory
+        )
+        tk.Button_directory.grid(row=3, column=1)
 
-        button_directory = Button(self.frame, text="Fetch Video Information", command=self.setup_stage)
-        button_directory.grid(row=4, column=0)
+        tk.Button_directory = tk.Button(
+            self.frame, text="Fetch Video Information", command=self.setup_stage
+        )
+        tk.Button_directory.grid(row=4, column=0)
 
-        button_quit = Button(self.root, text="Exit Program", command=self.root.quit, width=20, height=2, bg="#FA613A")
-        button_quit.grid(row=5, column=1, padx=10, pady=10)
+        tk.Button_quit = tk.Button(
+            self.root,
+            text="Exit Program",
+            command=self.root.quit,
+            width=20,
+            height=2,
+            bg="#FA613A",
+        )
+        tk.Button_quit.grid(row=5, column=1, padx=10, pady=10)
         # Create Widget
         self.root.mainloop()

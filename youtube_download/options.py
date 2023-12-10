@@ -51,7 +51,8 @@ def create_parser():
         "--gui_console",
         required=False,
         action="store_true",
-        help="download videos using Graphical Interface")
+        help="download videos using Graphical Interface",
+    )
     return parser
 
 
