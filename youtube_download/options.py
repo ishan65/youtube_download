@@ -53,6 +53,13 @@ def create_parser():
         action="store_true",
         help="download videos using Graphical Interface",
     )
+    parser.add_argument(
+        "-web",
+        "--web_console",
+        required=False,
+        action="store_true",
+        help="download videos using Web Console",
+    )
     return parser
 
 
@@ -60,6 +67,8 @@ def parse():
     parser = create_parser()
     known, unknown = parser.parse_known_args()
     if hasattr(known, "gui_console"):
+        return parser.parse_args()
+    if hasattr(known, "web_console"):
         return parser.parse_args()
     if not hasattr(known, "subparser") or known.subparser is None:
         print("Please specified right parameters")

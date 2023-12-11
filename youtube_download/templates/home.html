@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube download</title>
+</head>
+<script>
+    function openFileExplorer() {
+        // Trigger click on the file input element
+        document.getElementById('folderInput').click();
+    }
+
+    // Listen for changes in the file input
+    document.getElementById('folderInput').addEventListener('change', handleFolderSelection);
+
+    function handleFolderSelection() {
+        // Display the selected folder path
+        const selectedFolderPath = document.getElementById('selectedFolderPath');
+        const selectedFiles = document.getElementById('folderInput').files;
+
+        if (selectedFiles.length > 0) {
+            selectedFolderPath.textContent = selectedFiles[0].webkitRelativePath;
+        } else {
+            selectedFolderPath.textContent = 'No folder selected';
+        }
+    }
+</script>
+<body>
+    <h1>Youtube Download</h1>
+    <form action="#" method="post" enctype="multipart/form-data">
+
+        <label>Selec the option among Video /Playlist</label><br>
+        <input type="radio" name="type" value="Video">
+        <label for="vidoe">Video</label><br>
+        <input type="radio" name="type" value="Playlist">
+        <label for="playlist">Playlist</label><br>
+
+        <label for="url"> Youtube Video/Playlist URL</label>
+        <input type="text" name="url" id="url" style="width: 400px;" placeholder="https://www.youtube.com/dfghjk34567"><br>
+
+        <label for="folderInput">Choose a folder to save the video/playlist:</label>
+        <input type="file" id="folderInput" webkitdirectory directory multiple style="display:none;">
+        <button type="button" onclick="openFileExplorer()">Open File Explorer</button>
+        <p>Selected Folder Path: <span id="selectedFolderPath"></span></p>
+
+        <button type="submit">Fetch Videos</button>
+    </form>
+    <hr>
+</body>
+</html>
