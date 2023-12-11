@@ -1,4 +1,4 @@
-from tkinter import tk
+import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
 from youtube_download.youtube import youtube_download as yd
@@ -92,7 +92,7 @@ class GUI:
                     to_download.append(video_key_value[key])
             ytb.download_video_list(to_download, len(to_download), self.folderlocation)
 
-        selection = tk.Checktk.Button(
+        selection = tk.Checkbutton(
             self.frame2,
             text="Select All",
             variable=all_select,
@@ -104,7 +104,7 @@ class GUI:
         row_num = 2
         iter = 1
         for video in ytb.videos_from_url():
-            select_var = tk.Checktk.Button(
+            select_var = tk.Checkbutton(
                 self.frame2,
                 text=video.title,
                 variable=checkbox[iter - 1],
@@ -134,14 +134,14 @@ class GUI:
         option.set("video")
         option_lb = tk.Label(self.frame, text="Select the option to download")
         option_lb.grid(row=0, column=0)
-        radio1 = tk.RadioButton(
+        radio1 = tk.Radiobutton(
             self.frame,
             text="video",
             variable=option,
             value="video",
             command=lambda: self.user_option(option.get()),
         )
-        radio2 = tk.RadioButton(
+        radio2 = tk.Radiobutton(
             self.frame,
             text="playlist",
             variable=option,

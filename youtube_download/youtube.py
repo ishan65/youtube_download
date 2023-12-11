@@ -53,7 +53,7 @@ class youtube_download:
     def _chunking(entire_list, num_of_elem_in_chunks):
         chunked_array = []
         for i in range(0, len(entire_list), num_of_elem_in_chunks):
-            chunked_array.append(entire_list[i: i + num_of_elem_in_chunks])
+            chunked_array.append(entire_list[i : i + num_of_elem_in_chunks])
         return chunked_array
 
     def playlist_download(self, parallel_number, path):
