@@ -20,6 +20,7 @@ options:
   -v, --version        show program's version number and exit
   -gui, --gui_console  download videos using Graphical Interface
   -web, --web_console  download videos using Web Console```
+```
 
 To download single video:
 ```
