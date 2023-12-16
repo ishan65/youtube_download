@@ -1,3 +1,5 @@
+![alt text](./youtube.jpg)
+
 ## Dependency
 
 - [pytube](https://pypi.org/project/pytube/)
@@ -20,7 +22,7 @@ options:
   -h, --help           show this help message and exit
   -v, --version        show program's version number and exit
   -gui, --gui_console  download videos using Graphical Interface
-  -web, --web_console  download videos using Web Console```
+  -web, --web_console  download videos using Web Console
 ```
 
 To download single video:
