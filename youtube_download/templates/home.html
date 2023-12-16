@@ -5,47 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube download</title>
 </head>
-<script>
-    function openFileExplorer() {
-        // Trigger click on the file input element
-        document.getElementById('folderInput').click();
-    }
-
-    // Listen for changes in the file input
-    document.getElementById('folderInput').addEventListener('change', handleFolderSelection);
-
-    function handleFolderSelection() {
-        // Display the selected folder path
-        const selectedFolderPath = document.getElementById('selectedFolderPath');
-        const selectedFiles = document.getElementById('folderInput').files;
-
-        if (selectedFiles.length > 0) {
-            selectedFolderPath.textContent = selectedFiles[0].webkitRelativePath;
-        } else {
-            selectedFolderPath.textContent = 'No folder selected';
-        }
-    }
-</script>
+<link rel="stylesheet"  href= "{{ url_for('static',filename='styles/style.css') }}">
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
 <body>
-    <h1>Youtube Download</h1>
-    <form action="#" method="post" enctype="multipart/form-data">
+    <div id="input">
+        <div id="align">
+            <a href="https://www.youtube.com/">
+                <img src="{{ url_for('static',filename='img/youtube.jpg') }}"  alt="Youtube" width="140" height="100">
+            </a>
+            <h1>Youtube Download</h1>
+        </div>
+        <form action="#" method="post" id="form1" enctype="multipart/form-data">
+            <label>Selec the option among Video /Playlist</label><br>
+            <input type="radio" name="type" value="video">
+            <label for="vidoe">Video</label><br>
+            <input type="radio" name="type" value="playlist">
+            <label for="playlist">Playlist</label><br>
 
-        <label>Selec the option among Video /Playlist</label><br>
-        <input type="radio" name="type" value="Video">
-        <label for="vidoe">Video</label><br>
-        <input type="radio" name="type" value="Playlist">
-        <label for="playlist">Playlist</label><br>
+            <label for="url"> Youtube Video/Playlist URL</label>
+            <input type="text" name="url" id="url"  placeholder="https://www.youtube.com/dfghjk34567"><br>
 
-        <label for="url"> Youtube Video/Playlist URL</label>
-        <input type="text" name="url" id="url" style="width: 400px;" placeholder="https://www.youtube.com/dfghjk34567"><br>
+            <label for="folderInput">Specify the path to save the video/playlist:</label>
+            <input type="text" name="folderInput" id="folderInput" placeholder="C:\Users\im\Videos"><br>
 
-        <label for="folderInput">Choose a folder to save the video/playlist:</label>
-        <input type="file" id="folderInput" webkitdirectory directory multiple style="display:none;">
-        <button type="button" onclick="openFileExplorer()">Open File Explorer</button>
-        <p>Selected Folder Path: <span id="selectedFolderPath"></span></p>
+            <button type="submit" name="form1" onclick="form1_sumbit()">Fetch Videos</button>
+        </form>
+    </div>
+<hr>
+{% if context %}
+    <form id="form2" action="#" method="post">
+    {% if context.selection == "playlist" %}
+        <input type="checkbox" id="all" name='selectAll' value="selectAll" onchange="select_onbox(this)">
+        <label for="selectAll" id="selectAll" onclick="select_allcheckbox(this)"> <b>SELECT ALL</b> </label><br>
+    {% endif %}
 
-        <button type="submit">Fetch Videos</button>
+    {% for video in context.videos %}
+        <input type="checkbox" class="video" id="{{ loop.index }}" name='{{ video.title }}' value="{{ video }}">
+        <label for="{{ video.title }}" id="videolb" onclick='select_checkbox("{{ loop.index }}")'>{{ video.title }}</label><br>
+    {% endfor %}
+    <button type="submit" name="form2" onclick="form2_sumbit()">Download</button>
     </form>
-    <hr>
+{% endif %}
+
+<!-- Loading sign -->
+<div id="loading">Loading...</div>
+
 </body>
 </html>
