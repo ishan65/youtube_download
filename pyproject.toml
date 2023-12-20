@@ -5,6 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "youtube_downloaders"
 description = "Package to download youtube videos and playlist"
+repository = "https://github.com/ishan65/youtube_download"
 authors = [
     { name = "Ishan Mahajan", email = "imahajan0007@gmail.com"},
 ]
