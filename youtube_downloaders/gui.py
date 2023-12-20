@@ -8,7 +8,6 @@ class GUI:
     def __init__(self) -> None:
         self.root = tk.Tk()
         self.root.title("Youtube Downloader")
-        self.root.iconbitmap("utube.ico")
         self.frame = tk.LabelFrame(self.root, text="Download Youtube")
         self.frame.grid(padx=20, sticky="w")
 

@@ -68,7 +68,7 @@ class Web:
         elif request.method == "POST" and "form2" in request.form:
             to_download = []
             for vid in request.form.keys():
-                if vid != "form2":
+                if vid != "form2" and vid != "selectAll":
                     to_download.append(self.vid_lookup.get(vid))
             self.ytd.download_video_list(to_download, len(to_download), self.folder_location)
 
