@@ -15,8 +15,8 @@ pytube = "^15.0.0"
 
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools", "setuptools-scm", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project.scripts]
 youtube_download = "youtube_download.__main__:main"
