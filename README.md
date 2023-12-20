@@ -25,34 +25,40 @@ options:
   -web, --web_console  download videos using Web Console
 ```
 
-To download single video:
+##### To download single video:
 ```
 youtube_download video -url "https://www.youtube.com/watch?v=7uCpVOSXk8I" -save "C:\Users\im530\Downloads\dtdt"
 ```
 
-To download entire playlist:
+##### To download entire playlist:
 ```
 youtube_download playlist -url "https://www.youtube.com/playlist?list=PLW489siXAtnoA_fOdIzMHU8gAZHHfp-T5" -save "C:\Users\im530\Downloads\dtdt" -num 2
 ```
  - num : How many videos to be downloaded parallelly.
 
-To load the web page:
+## To load the web page:
 ```
 youtube_download -web
 ```
-## Input
-![alt text](./youtube.jpg)
 
-## Response
-![alt text](./youtube.jpg)
+#### url to visit
+```
+http://127.0.0.1:5789/
+```
+
+#### Input
+![alt text](./web1.JPG)
+
+#### Response
+![alt text](./web2.JPG)
 
 
-To load the GUI:
+## To load the GUI:
 ```
 youtube_download -gui
 ```
-## Input
-![alt text](./youtube.jpg)
+#### Input
+![alt text](./gui1.JPG)
 
-## Response
-![alt text](./youtube.jpg)
+#### Response
+![alt text](./gui2.JPG)
