@@ -40,8 +40,19 @@ To load the web page:
 ```
 youtube_download -web
 ```
+## Input
+![alt text](./youtube.jpg)
+
+## Response
+![alt text](./youtube.jpg)
+
 
 To load the GUI:
 ```
 youtube_download -gui
 ```
+## Input
+![alt text](./youtube.jpg)
+
+## Response
+![alt text](./youtube.jpg)
