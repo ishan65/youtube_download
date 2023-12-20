@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "youtube-download"
+name = "youtube_downloader"
 version = "0.1.0"
 description = "Package to download youtube videos and playlist"
 authors = [
@@ -13,16 +13,15 @@ python = "^3.11"
 Flask = "^3.0.0"
 pytube = "^15.0.0"
 
-
 [build-system]
 requires = ["setuptools", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project.scripts]
-youtube_download = "youtube_download.__main__:main"
+youtube_downloader = "youtube_downloader.__main__:main"
 
 [tool.setuptools.dynamic]
-version = {attr = "youtube_download.VERSION"}
+version = {attr = "youtube_downloader.VERSION"}
 
 [tool.setuptools]
-packages = ["youtube_download"]
+packages = ["youtube_downloader"]

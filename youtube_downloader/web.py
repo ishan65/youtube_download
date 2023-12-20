@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request
-from youtube_download.os_operations import operations as op
-from youtube_download.exception import youtubeException
-from youtube_download.youtube import youtube_download as ytd
+from youtube_downloader.os_operations import operations as op
+from youtube_downloader.exception import youtubeException
+from youtube_downloader.youtube import youtube_download as ytd
 
 
 class Web:

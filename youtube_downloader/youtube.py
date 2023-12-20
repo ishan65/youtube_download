@@ -1,8 +1,8 @@
 import concurrent.futures
 from pytube import Playlist, YouTube
 import re
-from youtube_download.os_operations import operations as op
-from youtube_download.exception import youtubeException
+from youtube_downloader.os_operations import operations as op
+from youtube_downloader.exception import youtubeException
 
 
 class youtube_download:
