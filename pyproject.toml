@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "youtube-download"
+version = "0.1.0"
+description = "Package to download youtube videos and playlist"
+authors = [
+    { name = "Ishan Mahajan", email = "imahajan0007@gmail.com"},
+]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Flask = "^3.0.0"
+pytube = "^15.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[project.scripts]
+youtube_download = "youtube_download.__main__:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "youtube_download.VERSION"}
+
+[tool.setuptools]
+packages = ["youtube_download"]
