@@ -5,7 +5,6 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "youtube_downloaders"
 description = "Package to download youtube videos and playlist"
-repository = "https://github.com/ishan65/youtube_download"
 authors = [
     { name = "Ishan Mahajan", email = "imahajan0007@gmail.com"},
 ]
@@ -21,6 +20,9 @@ dependencies = [
     'importlib-metadata; python_version>="3.10"',
 ]
 dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/ishan65/youtube_download"
 
 [project.scripts]
 youtube_downloaders = "youtube_downloaders.__main__:main"
