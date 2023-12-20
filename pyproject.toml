@@ -1,4 +1,4 @@
-[tool.poetry]
+[project]
 name = "youtube_downloader"
 version = "0.1.0"
 description = "Package to download youtube videos and playlist"
