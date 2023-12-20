@@ -1,6 +1,6 @@
 import argparse
 import sys
-from youtube_downloader import VERSION
+from youtube_downloaders import VERSION
 
 
 def create_parser():

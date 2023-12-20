@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
-from youtube_downloader.youtube import youtube_download as yd
+from youtube_downloaders.youtube import youtube_download as yd
 
 
 class GUI:

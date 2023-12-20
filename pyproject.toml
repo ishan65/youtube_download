@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "youtube_downloader"
+name = "youtube_downloaders"
 description = "Package to download youtube videos and playlist"
 authors = [
     { name = "Ishan Mahajan", email = "imahajan0007@gmail.com"},
@@ -22,10 +22,10 @@ dependencies = [
 dynamic = ["version"]
 
 [project.scripts]
-youtube_downloader = "youtube_downloader.__main__:main"
+youtube_downloaders = "youtube_downloaders.__main__:main"
 
 [tool.setuptools.dynamic]
-version = {attr = "youtube_downloader.VERSION"}
+version = {attr = "youtube_downloaders.VERSION"}
 
 [tool.setuptools]
-packages = ["youtube_downloader"]
+packages = ["youtube_downloaders"]

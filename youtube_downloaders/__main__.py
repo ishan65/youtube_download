@@ -1,7 +1,7 @@
-from youtube_downloader import youtube as yt
-from youtube_downloader import options
-from youtube_downloader.gui import GUI
-from youtube_downloader.web import Web
+from youtube_downloaders import youtube as yt
+from youtube_downloaders import options
+from youtube_downloaders.gui import GUI
+from youtube_downloaders.web import Web
 
 
 def main():
