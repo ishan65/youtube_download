@@ -1,7 +1,7 @@
 ##### How to use [![Video](https://drive.google.com/file/d/1Ag3_sk30a89WdBbOfpq3vwzyNGsG1x5Z/)](https://drive.google.com/file/d/1Ag3_sk30a89WdBbOfpq3vwzyNGsG1x5Z/)
 
 
-![alt text](./youtube.jpg)
+![alt text](https://github.com/ishan65/youtube_download/blob/main/youtube.jpg)
 
 ## Dependency
 
@@ -50,10 +50,10 @@ http://127.0.0.1:5789/
 ```
 
 #### Input
-![alt text](./web1.JPG)
+![alt text](https://github.com/ishan65/youtube_download/blob/main/web1.JPG)
 
 #### Response
-![alt text](./web2.JPG)
+![alt text](https://github.com/ishan65/youtube_download/blob/main/web2.JPG)
 
 
 ## To load the GUI:
@@ -61,7 +61,7 @@ http://127.0.0.1:5789/
 youtube_download -gui
 ```
 #### Input
-![alt text](./gui1.JPG)
+![alt text](https://github.com/ishan65/youtube_download/blob/main/gui1.JPG)
 
 #### Response
-![alt text](./gui2.JPG)
+![alt text](https://github.com/ishan65/youtube_download/blob/main/gui2.JPG)
