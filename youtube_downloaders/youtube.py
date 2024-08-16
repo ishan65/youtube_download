@@ -1,5 +1,5 @@
 import concurrent.futures
-from pytube import Playlist, YouTube
+from pytubefix import Playlist, YouTube
 import re
 from youtube_downloaders.os_operations import operations as op
 from youtube_downloaders.exception import youtubeException

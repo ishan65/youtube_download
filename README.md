@@ -5,7 +5,7 @@
 
 ## Dependency
 
-- [pytube](https://pypi.org/project/pytube/)
+- [pytubefix](https://pypi.org/project/pytubefix/)
 - [flask](https://pypi.org/project/Flask/)
 
 ## CLI
