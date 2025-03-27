@@ -16,7 +16,7 @@ classifiers = [
 ]
 dependencies = [
     "Flask==3.0.0",
-    "pytube==15.0.0",
+    "pytubefix",
     'importlib-metadata; python_version>="3.10"',
 ]
 dynamic = ["version"]
